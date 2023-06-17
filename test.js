@@ -12,7 +12,7 @@ data.append("grant_type", "client_credentials");
 data.append("client_id", apiKey);
 data.append("client_secret", apiSecret);
 
-//async funtion to get the access_token
+//async function to get the access_token
 async function getToken() {
  const response = await fetch(url, {
     method: "POST",
