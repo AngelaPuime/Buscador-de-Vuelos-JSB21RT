@@ -13,22 +13,22 @@ const getKeys = async () => {
     return [];
   }
 };
-
+const data2 = new URLSearchParams();
 const main = async () => {
   // Set the request parameters
   const [apiKey, apiSecret] = await getKeys();
   //console.log(apiKey, apiSecret);
-  const data = new URLSearchParams();
-  data.append("grant_type", "client_credentials");
-  data.append("client_id", apiKey);
-  data.append("client_secret", apiSecret);
+  data2.append("grant_type", "client_credentials");
+  data2.append("client_id", apiKey);
+  data2.append("client_secret", apiSecret);
+  console.log(apiKey, apiSecret);
 };
 
 //async function to get the access_token
 async function getToken() {
   const response = await fetch(url, {
     method: "POST",
-    body: data,
+    body: data2,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
@@ -55,7 +55,8 @@ async function info() {
   console.log(data2.data);
 }
 
-main();
+
+info();
 
 //* the code below doesnt works because its not async code
 // const infoVuelo = info();

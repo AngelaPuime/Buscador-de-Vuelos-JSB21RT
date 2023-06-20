@@ -1,0 +1,49 @@
+@import url(./main.css);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --mainColor: #4ddbd4;
+  --transparentMainColor: #28bbb867;
+  --secondaryColor: #E5CFAB;
+  --thirdColor: #C09D69;
+}
+/* ---------------header starts here-----------------*/
+.navbar {
+  display: flex;
+  padding: 1rem 0.5rem;
+  list-style-type: none;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  padding: 0.2rem;
+  justify-content: space-between;
+  background-color: var(--mainColor);
+}
+
+.hidden {
+  display: none;
+}
+.pageName {
+  font-size: 1.6rem;
+}
+/* Header ends here*/
+
+
+
+
+
+
+  
+
+
+
