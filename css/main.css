@@ -1,110 +1,147 @@
 @import url(./style.css);
 .search {
-  padding: 4rem 1rem;
-  background-image: url("../img/dub.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
+	margin: 2vh 0;
+	padding: 4rem 1rem;
+	background-image: url("../img/montana.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
-main{
-  margin-bottom: 10vh;
+
+main {
+	margin-bottom: 10vh;
 }
 h1 {
-  visibility: hidden;
+	display: none;
 }
 /* We give size to the icons */
 form img {
-  width: 20px;
+	width: 20px;
+	/* background: linear-gradient(180deg, rgb(106, 106, 106), rgb(198, 198, 198)); */
 }
 /* We use grid to distribute our formSearch */
 .search form {
-  display: grid;
-  grid-template-areas:
-    "iconFrom inputFrom iconTo inputTo"
-    "calendarFrom inputCalendarFrom calendarTo inputCalendarTo"
-    "iconPassenger inputPassenger btnSearch btnSearch";
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 7fr 1fr 7fr;
-  background-color: var(--transparentMainColor);
-  padding: 1rem;
-  gap: 0.3rem;
+	display: grid;
+	grid-template-areas:
+		"iconFrom inputFrom iconTo inputTo"
+		"calendarFrom inputCalendarFrom calendarTo inputCalendarTo"
+		"iconPassenger inputPassenger btnSearch btnSearch";
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 7fr 1fr 7fr;
+	background-color: rgba(245, 177, 121, 0.501);
+	padding: 1rem;
+	gap: 0.3rem;
 }
 
 form img:first-child {
-  grid-area: iconFrom;
+	grid-area: iconFrom;
 }
 form input[name="from"] {
-  grid-area: inputFrom;
+	grid-area: inputFrom;
 }
 
 form img:nth-child(3) {
-  grid-area: iconTo;
+	grid-area: iconTo;
 }
 form input[name="to"] {
-  grid-area: inputTo;
+	grid-area: inputTo;
 }
 
 form img:nth-child(5) {
-  grid-area: calendarFrom;
+	grid-area: calendarFrom;
 }
 
 form input[name="outbound"] {
-  grid-area: inputCalendarFrom;
+	grid-area: inputCalendarFrom;
 }
 form img:nth-child(7) {
-  grid-area: calendarTo;
+	grid-area: calendarTo;
 }
 form input[name="return"] {
-  grid-area: inputCalendarTo;
+	grid-area: inputCalendarTo;
 }
 
 form img:nth-child(9) {
-  grid-area: iconPassenger;
+	grid-area: iconPassenger;
 }
 form input[name="passenger"] {
-  grid-area: inputPassenger;
+	grid-area: inputPassenger;
 }
 
-form button {
-  grid-area: btnSearch;
-  width: 40%;
+form input {
+	font-family: var(--fontFamily);
+	width: 32vw;
+	border-radius: 9px;
+	padding: 0 0.3rem;
+	border: none;
+	background: linear-gradient(180deg, rgb(192, 186, 186), rgb(252, 243, 243));
+	box-shadow: 1px 2px 8px rgb(149, 141, 141) inset;
 }
-
+form input::placeholder {
+	color: black;
+}
 /* We start making styles to the info section */
 
 section#info img {
-  width: 30vw;
+	width: 30vw;
 }
 section#info article {
-  width: 30vw;
+	width: 30vw;
 }
 section#info {
-  margin: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 1rem;
+	margin: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 1rem;
 }
 
 h2 {
-  font-size: 0.9rem;
-  text-align: center;
+	font-size: 0.9rem;
+	text-align: center;
 }
 section#info p {
-  text-align: center;
-  font-size: 0.6rem;
+	text-align: center;
+	font-size: 0.6rem;
 }
 
+button {
+	font-family: var(--fontFamily);
+	grid-area: btnSearch;
+	padding: 0.2rem 1.2em;
+	border-radius: 2em;
+	border: none;
+	text-align: center;
+	background-color: var(--mainColor);
+	margin: auto;
+}
+/* form button {
+  grid-area: btnSearch;
+  width: 40%;
+} */
+button:hover {
+	background-color: #4095c6;
+}
 
 /* Footer starts here */
 
-footer{
-  height: 5%;
-  background-color: var(--mainColor);
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  text-align: center;
-  padding: 0.4rem;
+footer {
+	font-size: 0.75rem;
+	height: 5vh;
+	width: 100vw;
+	background-color: var(--mainColor);
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
+/* ¡suelta las amarras y vuela con seguridad! Estamos aquí para ayudarte a encontrar los mejores vuelos que se adapten a tus necesidades, mientras te brindamos tranquilidad y confianza en cada paso del camino
+
+Desde el momento en que reservas tu vuelo hasta que llegas a tu destino, nos esforzamos por proporcionarte una experiencia de vuelo segura y sin preocupaciones.
+
+Contamos con una amplia selección de aerolíneas reconocidas por su excelencia en seguridad. 
+Nuestros rigurosos estándares de seguridad nos permiten ofrecerte opciones de vuelo confiables y protegidas
+
+Nuestro compromiso es brindarte un viaje tranquilo y confiable. Con nosotros, puedes volar con seguridad, sabiendo que trabajamos arduamente para garantizar que cada aspecto de tu experiencia sea cuidadosamente gestionado. */

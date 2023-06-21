@@ -13,3 +13,5 @@ posicionamiento de los aviones
 meter imagenes toggler en carpeta y quitar del html
 
 terminar de legir colores
+
+revisar responsividad
