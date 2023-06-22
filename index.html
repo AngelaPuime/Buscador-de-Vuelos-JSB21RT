@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Flight 2.0</title>
-    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>Volare</title>
+    <link rel="icon" href="./icons/logo.png" />
+    <link rel="stylesheet" href="./css/header.css" />
   </head>
   <body>
     <header>
       <nav>
         <ul class="navbar">
           <li>
-            <img src="./icons/logo.png" alt="" id="iconPageName"/>
+            <img
+              src="./icons/logo.png"
+              alt="Logotipo Volare"
+              id="iconPageName"
+            />
           </li>
           <!-- <li class="pageName">Volare</li> -->
-          <li class="hidden">Flights</li>
           <li class="hidden">Hotel</li>
           <li class="hidden">Car</li>
         </ul>
@@ -23,39 +26,40 @@
       <nav>
         <ul class="navbar">
           <li>
-            <input type="checkbox" name="" />
+            <input type="checkbox" />
             <label id="toggleTheme">
-              <img src="./icons/button.svg" alt="" >
+              <img src="./icons/button.svg" alt="" />
             </label>
             <div class="background"></div>
           </li>
-          <li>
-            <img src="" alt="" />
-          </li>
+          <li>Idioma</li>
         </ul>
       </nav>
     </header>
     <main>
       <section class="search">
         <h1>FLIGHT SEARCHER</h1>
-        <form action="" method="get" id="searchForm">
-          <!-- <div id="fromTo"> -->
+        <form action="#" method="get" id="searchForm">
           <img src="./icons/plane_takeoff.svg" alt="takeoff place" />
           <input type="text" placeholder="ORIGEN" name="from" />
           <img src="./icons/plane_landing.svg" alt="plane landing" />
           <input type="text" placeholder="DESTINO" name="to" />
-          <!-- </div> -->
-          <!-- <div id="dates"> -->
+
           <img src="./icons/calendar.svg" alt="calendar" />
           <input type="text" name="outbound" placeholder="YYYY-MM-DD" />
           <img src="./icons/calendar.svg" alt="calendar" />
           <input type="text" name="return" placeholder="YYYY-MM-DD" />
-          <!-- </div> -->
-          <!-- <div id="passengerSearch"> -->
+
           <img src="./icons/icon_passenger.svg" alt="passenger" />
           <input type="number" placeholder="PASAJEROS" name="passenger" />
           <button type="submit" id="searchButton">Buscar</button>
-          <!-- </div> -->
+          <p>
+            *Los aeropuertos de origen y destino deben ir con el código
+            <a
+              href="https://es.wikipedia.org/wiki/C%C3%B3digo_de_aeropuertos_de_IATA"
+              >IATA</a
+            >
+          </p>
         </form>
       </section>
       <!-- Section with extra info -->
@@ -64,32 +68,35 @@
           <img src="./img/plane.jpg" alt="" />
           <h2>Vuela con seguridad</h2>
           <p>
-            Desde el momento en que reservas tu vuelo hasta que llegas a tu destino, nos esforzamos por proporcionarte una experiencia de vuelo segura y sin preocupaciones.
+            Desde el momento en que reservas tu vuelo hasta que llegas a tu
+            destino, nos esforzamos por proporcionarte una experiencia de vuelo
+            segura y sin preocupaciones.
           </p>
         </article>
         <article>
           <img src="./img/passport.jpg" alt="" />
           <h2>Vuela con confianza</h2>
           <p>
-            Contamos con una amplia selección de aerolíneas reconocidas por su excelencia en seguridad. 
-            Nuestros rigurosos estándares de seguridad nos permiten ofrecerte opciones de vuelo confiables y protegidas
+            Contamos con una amplia selección de aerolíneas reconocidas por su
+            excelencia en seguridad. Nuestros rigurosos estándares de seguridad
+            nos permiten ofrecerte opciones de vuelo confiables y protegidas
           </p>
         </article>
         <article>
           <img src="./img/viajero.jpg" alt="" />
           <h2>Vuela con nosotros</h2>
           <p>
-            Nuestro compromiso es brindarte un viaje confiable. Con nosotros, puedes volar tranquilo, sabiendo que trabajamos arduamente para garantizar que cada aspecto de tu experiencia sea cuidadosamente gestionado.
+            Nuestro compromiso es brindarte un viaje confiable. Con nosotros,
+            puedes volar tranquilo, sabiendo que trabajamos arduamente para
+            garantizar que cada aspecto de tu experiencia sea cuidadosamente
+            gestionado.
           </p>
         </article>
       </section>
     </main>
     <footer>
-      <p>
-        David, Angela, Dumitru, Noelia - 2023 &#169 
-      </p>
+      <p>David, Angela, Dumitru, Noelia - 2023 ©</p>
     </footer>
     <script type="module" src="./js/apiRequest.js"></script>
-    <script src="./js/button.js"></script>
   </body>
 </html>

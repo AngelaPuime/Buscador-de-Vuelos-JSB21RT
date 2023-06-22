@@ -1,0 +1,54 @@
+@import url(./main.css);
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Nunito:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --fontFamily: "Nunito", sans-serif;
+  font-family: "Nunito", sans-serif;
+
+  --mainColor: #4ddbba;
+  --transparentMainColor: #28bbb867;
+  --secondaryColor: #e5cfab;
+  --thirdColor: #c09d69;
+  background: linear-gradient(180deg, var(--mainColor), rgb(255, 255, 255));
+}
+/* ---------------header starts here-----------------*/
+#iconPageName {
+  width: 20vw;
+}
+
+.navbar {
+  display: flex;
+  padding: 0.2rem 0.5rem;
+  list-style-type: none;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  padding: 0.2rem;
+  justify-content: space-between;
+  background-color: var(--mainColor);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Header ends here*/
+
+/*mediaquery tablets*/
+@media (min-width: 600px) {
+  .hidden {
+    display: inline-block;
+  }
+}

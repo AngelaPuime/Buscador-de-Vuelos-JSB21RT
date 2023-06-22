@@ -25,95 +25,82 @@ data.append("client_secret", apiSecret);
 
 //getting token with the params
 function getToken() {
-	//promise created
-	return new Promise((resolve, reject) => {
-		fetch(url, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			},
-			body: data.toString(),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				const token = data.access_token;
-				resolve(token);
-			})
-			.catch((error) => {
-				reject(error);
-			});
-	});
+  //promise created
+  return new Promise((resolve, reject) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: data.toString(),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const token = data.access_token;
+        resolve(token);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
 }
 
 // sending request to the API
-async function getFlightOffers() {
-	return getToken()
-		.then(async (token) => {
-			const flightOffersUrl =
-				"https://test.api.amadeus.com/v2/shopping/flight-offers";
-			const queryParams = new URLSearchParams({
-				originLocationCode: fromInput, // we are using dom here
-				destinationLocationCode: toInput, // we are using dom here
-				departureDate: departureDateInput, // we are using dom here
-				adults: passengersInput, // we are using dom here
-				nonStop: false,
-				max: 50,
-			});
+export async function getFlightOffers() {
+  return getToken()
+    .then(async (token) => {
+      const flightOffersUrl =
+        "https://test.api.amadeus.com/v2/shopping/flight-offers";
+      const queryParams = new URLSearchParams({
+        originLocationCode: fromInput, // we are using dom here
+        destinationLocationCode: toInput, // we are using dom here
+        departureDate: departureDateInput, // we are using dom here
+        adults: passengersInput, // we are using dom here
+        nonStop: false,
+        max: 50,
+      });
 
-			return fetch(`${flightOffersUrl}?${queryParams.toString()}`, {
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-				.then((response) => response.json())
-				.then((data) => data.data)
-				.catch((error) => {
-					throw error;
-				});
-		})
-		.catch((error) => {
-			throw error;
-		});
+      return fetch(`${flightOffersUrl}?${queryParams.toString()}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => data.data)
+        .catch((error) => {
+          throw error;
+        });
+    })
+    .catch((error) => {
+      throw error;
+    });
 }
-
-// we call the function
-// getFlightOffers()
-// 	.then((flightOffers) => {
-// 		if (flightOffers && flightOffers.length > 0) {
-// 			const firstOffer = flightOffers[0];
-// 			const price = firstOffer.price.total;
-// 			console.log(flightOffers);
-// 			console.log(price);
-// 		} else {
-// 			console.log("No se encontraron datos de vuelo.");
-// 		}
-// 	})
-// 	.catch((error) => {
-// 		console.log(error);
-// 	});
-
 btnSearch.addEventListener("click", (e) => {
-	console.log("hola");
-	e.preventDefault();
-	fromInput = fromInput.value;
-	toInput = toInput.value;
-	departureDateInput = departureDateInput.value;
-	// returnDateInput = returnDateInput.value
-	passengersInput = passengersInput.value;
-	getFlightOffers()
-		.then((flightOffers) => {
-			if (flightOffers && flightOffers.length > 0) {
-				const firstOffer = flightOffers[0];
-				const price = firstOffer.price.total;
-				console.log(flightOffers);
-				console.log(price);
-			} else {
-				console.log("No se encontraron datos de vuelo.");
-			}
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-	console.log(fromInput, toInput, departureDateInput, passengersInput);
+  try {
+    e.preventDefault();
+    fromInput = fromInput.value;
+    if (fromInput.length !== 3) {
+      throw new Error("Longitud válida: 3 caracteres");
+    }
+    toInput = toInput.value;
+    departureDateInput = departureDateInput.value;
+    // returnDateInput = returnDateInput.value
+    passengersInput = passengersInput.value;
+    getFlightOffers()
+      .then((flightOffers) => {
+        if (flightOffers && flightOffers.length > 0) {
+          const firstOffer = flightOffers[0];
+          const price = firstOffer.price.total;
+          console.log(flightOffers);
+          console.log(price);
+        } else {
+          console.log("No se encontraron datos de vuelo.");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(fromInput, toInput, departureDateInput, passengersInput);
+  } catch (error) {}
 });
