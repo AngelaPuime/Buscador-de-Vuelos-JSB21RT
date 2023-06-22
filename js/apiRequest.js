@@ -1,4 +1,5 @@
 "use strict";
+
 // url of amadues api
 
 //inputs from the user
@@ -46,16 +47,16 @@ function getToken() {
 }
 
 // sending request to the API
-export async function getFlightOffers() {
+async function getFlightOffers() {
   return getToken()
     .then(async (token) => {
       const flightOffersUrl =
         "https://test.api.amadeus.com/v2/shopping/flight-offers";
       const queryParams = new URLSearchParams({
-        originLocationCode: fromInput, // we are using dom here
-        destinationLocationCode: toInput, // we are using dom here
-        departureDate: departureDateInput, // we are using dom here
-        adults: passengersInput, // we are using dom here
+        originLocationCode: fromValue,
+        destinationLocationCode: toValue,
+        departureDate: departureDateValue,
+        adults: passengersValue,
         nonStop: false,
         max: 50,
       });
@@ -76,31 +77,32 @@ export async function getFlightOffers() {
       throw error;
     });
 }
+let fromValue;
+let toValue;
+let departureDateValue;
+let passengersValue;
+
 btnSearch.addEventListener("click", (e) => {
-  try {
-    e.preventDefault();
-    fromInput = fromInput.value;
-    if (fromInput.length !== 3) {
-      throw new Error("Longitud válida: 3 caracteres");
-    }
-    toInput = toInput.value;
-    departureDateInput = departureDateInput.value;
-    // returnDateInput = returnDateInput.value
-    passengersInput = passengersInput.value;
-    getFlightOffers()
-      .then((flightOffers) => {
-        if (flightOffers && flightOffers.length > 0) {
-          const firstOffer = flightOffers[0];
-          const price = firstOffer.price.total;
-          console.log(flightOffers);
-          console.log(price);
-        } else {
-          console.log("No se encontraron datos de vuelo.");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    console.log(fromInput, toInput, departureDateInput, passengersInput);
-  } catch (error) {}
+  console.log("hola");
+  e.preventDefault();
+  fromValue = fromInput.value.toUpperCase();
+  toValue = toInput.value.toUpperCase();
+  departureDateValue = departureDateInput.value;
+  passengersValue = passengersInput.value;
+
+  getFlightOffers()
+    .then((flightOffers) => {
+      if (flightOffers && flightOffers.length > 0) {
+        const firstOffer = flightOffers[0];
+        const price = firstOffer.price.total;
+        console.log(flightOffers);
+        console.log(price);
+      } else {
+        console.log("No se encontraron datos de vuelo.");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  console.log(fromValue, toValue, departureDateValue, passengersValue);
 });

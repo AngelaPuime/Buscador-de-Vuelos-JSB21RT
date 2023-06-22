@@ -14,8 +14,8 @@ h1 {
 }
 /* We give size to the icons */
 form img {
+  justify-self: end;
   width: 20px;
-  /* background: linear-gradient(180deg, rgb(106, 106, 106), rgb(198, 198, 198)); */
 }
 /* We use grid to distribute our formSearch */
 .search form {
@@ -25,7 +25,7 @@ form img {
     "calendarFrom inputCalendarFrom calendarTo inputCalendarTo"
     "iconPassenger inputPassenger btnSearch btnSearch"
     "iata iata iata iata";
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 0.5fr;
   grid-template-columns: 1fr 7fr 1fr 7fr;
   background-color: rgba(245, 177, 121, 0.501);
   padding: 1rem;
@@ -70,7 +70,7 @@ form input[name="passenger"] {
 
 form input {
   font-family: var(--fontFamily);
-  width: 32vw;
+  width: 100%;
   border-radius: 9px;
   padding: 0 0.3rem;
   border: none;
@@ -87,6 +87,12 @@ form p {
   text-align: center;
   height: 1rem;
 }
+
+form a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* We start making styles to the info section */
 
 section#info img {
@@ -122,14 +128,11 @@ button {
   border: none;
   text-align: center;
   background-color: var(--mainColor);
-  margin: auto;
+  justify-self: end;
 }
-/* form button {
-  grid-area: btnSearch;
-  width: 40%;
-} */
+
 button:hover {
-  background-color: #4095c6;
+  background-color: #7dbce0;
 }
 
 /* Footer starts here */
@@ -150,5 +153,46 @@ footer {
 @media (min-width: 600px) {
   .hidden {
     display: inline-block;
+  }
+
+  form p {
+    text-align: left;
+    grid-column: 2 / span 3;
+  }
+
+  .search form {
+    grid-template-columns: 0.5fr 7fr 1fr 7fr;
+  }
+
+  section#info img {
+    width: 150px;
+  }
+
+  section#info article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+
+/*mediaquery size 950px*/
+@media (min-width: 950px) {
+  .search form {
+    display: grid;
+    grid-template-areas:
+      "iconFrom inputFrom iconTo inputTo calendarFrom inputCalendarFrom calendarTo inputCalendarTo iconPassenger inputPassenger btnSearch"
+      "iata iata iata iata iata iata iata iata iata iata iata";
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-columns: 1fr 6fr 1fr 6fr 1fr 4fr 1fr 4fr 1fr 1.5fr 1fr;
+    margin: 0 140px;
+  }
+  form p {
+    text-align: left;
+    grid-column: 2 / span 10;
+  }
+
+  form input::placeholder {
+    font-size: 0.75rem;
   }
 }

@@ -17,6 +17,7 @@ html {
   --secondaryColor: #e5cfab;
   --thirdColor: #c09d69;
   background: linear-gradient(180deg, var(--mainColor), rgb(255, 255, 255));
+  height: auto;
 }
 /* ---------------header starts here-----------------*/
 #iconPageName {
@@ -50,5 +51,12 @@ header {
 @media (min-width: 600px) {
   .hidden {
     display: inline-block;
+  }
+}
+
+/*mediaquery laptop*/
+@media (min-width: 950px) {
+  #iconPageName {
+    width: 9vw;
   }
 }
