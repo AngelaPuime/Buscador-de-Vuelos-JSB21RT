@@ -84,7 +84,8 @@ form input::placeholder {
 form p {
   grid-area: iata;
   font-size: 0.7rem;
-  text-align: center;
+  text-align: left;
+  grid-column: 2 / span 3;
   height: 1rem;
 }
 
@@ -111,7 +112,7 @@ section#info {
   gap: 1rem;
 }
 
-h2 {
+h3 {
   font-size: 0.9rem;
   text-align: center;
 }
@@ -149,6 +150,9 @@ footer {
   align-items: center;
   text-align: center;
 }
+
+/* footer ends here */
+
 /* Mediaquery size min 600px*/
 @media (min-width: 600px) {
   .hidden {
@@ -191,8 +195,16 @@ footer {
     text-align: left;
     grid-column: 2 / span 10;
   }
-
-  form input::placeholder {
-    font-size: 0.75rem;
+  .dateInput {
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 1px;
   }
+}
+
+/* Dando estilo a los detalles del vuelo*/
+
+html body section.response li{
+
 }

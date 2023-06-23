@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,26 +12,17 @@
       <nav>
         <ul class="navbar">
           <li>
-            <img
-              src="./icons/logo.png"
-              alt="Logotipo Volare"
-              id="iconPageName"
-            />
+            <a href="./index.html">
+              <img
+                src="./icons/logo.png"
+                alt="Logotipo Volare"
+                id="iconPageName"
+              />
+            </a>
           </li>
           <!-- <li class="pageName">Volare</li> -->
           <li class="hidden">Hotel</li>
-          <li class="hidden">Car</li>
-        </ul>
-      </nav>
-      <nav>
-        <ul class="navbar">
-          <li>
-            <input type="checkbox" />
-            <label id="toggleTheme">
-              <img src="./icons/button.svg" alt="" />
-            </label>
-          </li>
-          <li>Idioma</li>
+          <li class="hidden">Coche</li>
         </ul>
       </nav>
     </header>
@@ -45,12 +36,22 @@
           <input type="text" placeholder="DESTINO" name="to" />
 
           <img src="./icons/calendar.svg" alt="calendar" />
-          <input type="text" name="outbound" placeholder="YYYY-MM-DD" />
+          <input
+            type="text"
+            name="outbound"
+            placeholder="DD-MM-YYYY"
+            class="dateInput"
+          />
           <img src="./icons/calendar.svg" alt="calendar" />
-          <input type="text" name="return" placeholder="YYYY-MM-DD" />
+          <input
+            type="text"
+            name="return"
+            placeholder="DD-MM-YYYY"
+            class="dateInput"
+          />
 
           <img src="./icons/icon_passenger.svg" alt="passenger" />
-          <input type="number" placeholder="0" name="passenger" />
+          <input type="text" placeholder="0" name="passenger" />
           <button type="submit" id="searchButton">Buscar</button>
           <p>
             *Los aeropuertos de origen y destino deben ir con el código
@@ -62,11 +63,22 @@
           </p>
         </form>
       </section>
+      <section class="response">
+        <h2>Los datos para tu vuelo de mañana:</h2>
+        <ul> 
+             <li>Origen:</li>
+              <li>Destino:</li>
+              <li>Hora:</li>
+              <li>Precio: </li>
+              <li></li>
+  
+        </ul>
+      </section>
       <!-- Section with extra info -->
       <section id="info">
         <article>
           <img src="./img/plane.jpg" alt="" />
-          <h2>Vuela con seguridad</h2>
+          <h3>Vuela con seguridad</h3>
           <p>
             Desde el momento en que reservas tu vuelo hasta que llegas a tu
             destino, nos esforzamos por proporcionarte una experiencia de vuelo
@@ -75,16 +87,16 @@
         </article>
         <article>
           <img src="./img/passport.jpg" alt="" />
-          <h2>Vuela con confianza</h2>
+          <h3>Vuela con confianza</h3>
           <p>
             Contamos con una amplia selección de aerolíneas reconocidas por su
             excelencia en seguridad. Nuestros rigurosos estándares de seguridad
-            nos permiten ofrecerte opciones de vuelo confiables y protegidas
+            nos permiten ofrecerte opciones de vuelo confiables y protegidas.
           </p>
         </article>
         <article>
           <img src="./img/viajero.jpg" alt="" />
-          <h2>Vuela con nosotros</h2>
+          <h3>Vuela con nosotros</h3>
           <p>
             Nuestro compromiso es brindarte un viaje confiable. Con nosotros,
             puedes volar tranquilo, sabiendo que trabajamos arduamente para
@@ -97,6 +109,6 @@
     <footer>
       <p>David, Angela, Dumitru, Noelia - 2023 ©</p>
     </footer>
-    <script type="module" src="./js/apiRequest.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
