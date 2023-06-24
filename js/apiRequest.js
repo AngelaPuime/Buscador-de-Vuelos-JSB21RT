@@ -1,10 +1,6 @@
 "use strict";
 
-import {
-  apiUrl,
-  apiKey,
-  apiSecret,
-} from "./const.js";
+import { apiUrl, apiKey, apiSecret } from "./const.js";
 
 // Obtener el token de acceso a la API de Amadeus
 async function getToken() {
@@ -26,7 +22,7 @@ async function getToken() {
   return responseData.access_token;
 }
 
-// Obtener las ofertas de vuelo
+// Obtener la IDA
 async function getFlightOffers(
   token,
   fromValue,
@@ -56,4 +52,4 @@ async function getFlightOffers(
   return responseData.data;
 }
 
-export { getFlightOffers, getToken};
+export { getFlightOffers, getToken };

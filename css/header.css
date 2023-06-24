@@ -15,7 +15,7 @@ html {
   --mainColor: #4ddbba;
   --transparentMainColor: #28bbb867;
   --secondaryColor: #e5cfab;
-  --thirdColor: #c09d69;
+  --thirdColor: #f8b755;
   background: linear-gradient(180deg, var(--mainColor), rgb(255, 255, 255));
 }
 

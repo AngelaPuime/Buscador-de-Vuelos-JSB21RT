@@ -204,7 +204,37 @@ footer {
 }
 
 /* Dando estilo a los detalles del vuelo*/
+.response {
+}
 
-html body section.response li{
+.response article {
+  text-align: center;
+  border: solid black 2px;
+  width: 55vw;
+  margin: 2.5rem auto 5rem;
+  padding: 1.5rem;
+  border-radius: 9px;
+  background: linear-gradient(
+    180deg,
+    rgba(248, 190, 143, 0.501),
+    var(--thirdColor)
+  );
+}
 
+.response article ul {
+  margin-top: 1rem;
+  list-style-type: none;
+}
+
+.response p {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.response .error {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(77, 77, 77, 0.55);
+  font-size: 1.2rem;
+  color: rgb(148, 36, 36);
 }

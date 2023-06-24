@@ -17,17 +17,17 @@ function handleSearchClick(event) {
     const fromValue = fromInput.value.toUpperCase();
     if (fromValue.length !== 3) {
       // responseSection =
-      throw new Error("Valor válido: 3 Caracteres.");
+      throw new Error("Valor válido 3 caracteres.");
     }
     if (!isNaN(fromValue)) {
-      throw new Error("Valor válido: Letras.");
+      throw new Error("Valor válido letras.");
     }
     const toValue = toInput.value.toUpperCase();
     if (toValue.length !== 3) {
-      throw new Error("Valor válido: 3 Caracteres");
+      throw new Error("Valor válido 3 caracteres");
     }
     if (!isNaN(toValue)) {
-      throw new Error("Valor válido: Letras.");
+      throw new Error("Valor válido letras.");
     }
     let departureDateValue = departureDateInput.value;
     departureDateValue = cambiarFormatoFecha(departureDateValue);
@@ -35,7 +35,7 @@ function handleSearchClick(event) {
     passengersValue = Math.floor(passengersValue);
 
     if (isNaN(passengersValue)) {
-      throw new Error("Valor válido: Números.");
+      throw new Error("Valor válido números.");
     }
 
     getToken()
@@ -52,8 +52,23 @@ function handleSearchClick(event) {
         if (flightOffers && flightOffers.length > 0) {
           const firstOffer = flightOffers[0];
           const price = firstOffer.price.total;
+          let duration = firstOffer.itineraries[0].duration.slice(2);
           console.log(flightOffers);
-          console.log(price);
+
+          //creamos la seccion con los datos del vuelo
+          responseSection.innerHTML = `
+
+          <article>
+          <h2>LOS DATOS PARA TU VUELO DEL</h2>   
+          <p>${departureDateInput.value}</p>
+          <ul>
+            <li><strong>Origen:</strong> ${fromValue}</li>
+            <li><strong>Destino:</strong> ${toValue}</li>
+            <li><strong>Precio:</strong> ${price}€</li>
+            <li><strong>Duracion de vuelo:</strong> ${duration}</li>
+          </ul>
+        </article>
+          `;
         } else {
           throw new Error("No se encontraron datos de vuelo.");
         }
@@ -62,21 +77,10 @@ function handleSearchClick(event) {
         console.log(error);
       });
     //llamamos a la seccion para q imprima los resultados (solo llega aqui si no entro en nigun error)
-    responseSection.innerHTML = `
-
-      <h2>Los datos para tu vuelo de mañana:</h2>
-      <ul> 
-            <li>Origen ${fromValue}</li>
-            <li>Destino:${toInput}</li>
-            <li>Precio:${getFlightOffers.[0].price.total} </li>
-      
-
-      </ul>
-    
-    
-    `;
   } catch (error) {
-    console.log(error);
+    responseSection.innerHTML = `
+    <article class="error"> ${error} </article> 
+    `;
   }
 }
 
@@ -102,6 +106,3 @@ function cambiarFormatoFecha(fecha) {
 }
 
 //
-
-//cuando llega a un error anade a la section vacia algo
-//Si no hay un error anade a esa misma seccion vacia los datos
