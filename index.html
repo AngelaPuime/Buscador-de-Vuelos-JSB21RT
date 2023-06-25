@@ -1,105 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Volare</title>
-    <link rel="icon" href="./icons/logo.png" />
-    <link rel="stylesheet" href="./css/header.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul class="navbar">
-          <li>
-            <a href="./index.html">
-              <img
-                src="./icons/logo.png"
-                alt="Logotipo Volare"
-                id="iconPageName"
-              />
-            </a>
-          </li>
-          <!-- <li class="pageName">Volare</li> -->
-          <li class="hidden">Hotel</li>
-          <li class="hidden">Coche</li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section class="search">
-        <h1>FLIGHT SEARCHER</h1>
-        <form action="#" method="get" id="searchForm">
-          <img src="./icons/plane_takeoff.svg" alt="takeoff place" />
-          <input type="text" placeholder="ORIGEN" name="from" />
-          <img src="./icons/plane_landing.svg" alt="plane landing" />
-          <input type="text" placeholder="DESTINO" name="to" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Volare</title>
+		<link rel="icon" href="./icons/favicon.svg" />
+		<link rel="stylesheet" href="./css/header.css" />
+	</head>
+	<body>
+		<header>
+			<a href="./index.html">
+				<img src="./icons/logo.png" alt="Logotipo Volare" id="iconPageName" />
+			</a>
+		</header>
+		<main>
+			<section class="search">
+				<h1>FLIGHT SEARCHER</h1>
+				<form action="#" method="get" id="searchForm">
+					<img src="./icons/plane_takeoff.svg" alt="takeoff place" />
+					<input type="text" placeholder="ORIGEN" name="from" />
+					<img src="./icons/plane_landing.svg" alt="plane landing" />
+					<input type="text" placeholder="DESTINO" name="to" />
 
-          <img src="./icons/calendar.svg" alt="calendar" />
-          <input
-            type="text"
-            name="outbound"
-            placeholder="DD-MM-YYYY"
-            class="dateInput"
-          />
-          <img src="./icons/calendar.svg" alt="calendar" />
-          <input
-            type="text"
-            name="return"
-            placeholder="DD-MM-YYYY"
-            class="dateInput"
-          />
+					<img src="./icons/calendar.svg" alt="calendar" />
+					<input
+						type="text"
+						name="outbound"
+						placeholder="DD-MM-YYYY"
+						class="dateInput"
+					/>
+					<img src="./icons/calendar.svg" alt="calendar" />
+					<input
+						type="text"
+						name="return"
+						placeholder="PROXIMAMENTE"
+						class="dateInput"
+						disabled
+					/>
 
-          <img src="./icons/icon_passenger.svg" alt="passenger" />
-          <input type="text" placeholder="0" name="passenger" />
-          <button type="submit" id="searchButton">Buscar</button>
-          <p>
-            *Los aeropuertos de origen y destino deben ir con el código
-            <a
-              target="_blank"
-              href="https://es.wikipedia.org/wiki/C%C3%B3digo_de_aeropuertos_de_IATA"
-              >IATA</a
-            >
-          </p>
-        </form>
-      </section>
-      <section class="response"></section>
-
-      <!-- Section with extra info -->
-      <section id="info">
-        <article>
-          <img src="./img/plane.jpg" alt="" />
-          <h3>Vuela con seguridad</h3>
-          <p>
-            Desde el momento en que reservas tu vuelo hasta que llegas a tu
-            destino, nos esforzamos por proporcionarte una experiencia de vuelo
-            segura y sin preocupaciones.
-          </p>
-        </article>
-        <article>
-          <img src="./img/passport.jpg" alt="" />
-          <h3>Vuela con confianza</h3>
-          <p>
-            Contamos con una amplia selección de aerolíneas reconocidas por su
-            excelencia en seguridad. Nuestros rigurosos estándares de seguridad
-            nos permiten ofrecerte opciones de vuelo confiables y protegidas.
-          </p>
-        </article>
-        <article>
-          <img src="./img/viajero.jpg" alt="" />
-          <h3>Vuela con nosotros</h3>
-          <p>
-            Nuestro compromiso es brindarte un viaje confiable. Con nosotros,
-            puedes volar tranquilo, sabiendo que trabajamos arduamente para
-            garantizar que cada aspecto de tu experiencia sea cuidadosamente
-            gestionado.
-          </p>
-        </article>
-      </section>
-    </main>
-    <footer>
-      <p>David, Angela, Dumitru, Noelia - 2023 ©</p>
-    </footer>
-    <script type="module" src="./js/main.js"></script>
-  </body>
+					<img src="./icons/icon_passenger.svg" alt="passenger" />
+					<input type="text" placeholder="0" name="passenger" />
+					<button type="submit" id="searchButton">Buscar</button>
+					<p>
+						*Los aeropuertos de origen y destino deben ir con el código
+						<a
+							target="_blank"
+							href="https://es.wikipedia.org/wiki/C%C3%B3digo_de_aeropuertos_de_IATA"
+							>IATA
+						</a>
+					</p>
+				</form>
+			</section>
+			<section class="loading hidden">
+				<div class="container">
+					<div class="fetching">
+						<div class="balls"></div>
+						<div class="balls"></div>
+						<div class="balls"></div>
+					</div>
+				</div>
+			</section>
+			<!-- Section where we will introduce the response -->
+			<section class="response"></section>
+			<!-- Section with extra info -->
+			<section id="info">
+				<article>
+					<img src="./img/plane.jpg" alt="" />
+					<h3>Vuela con seguridad</h3>
+					<p>
+						Desde el momento en que reservas tu vuelo hasta que llegas a tu
+						destino, nos esforzamos por proporcionarte una experiencia de vuelo
+						segura y sin preocupaciones.
+					</p>
+				</article>
+				<article>
+					<img src="./img/passport.jpg" alt="" />
+					<h3>Vuela con confianza</h3>
+					<p>
+						Contamos con una amplia selección de aerolíneas reconocidas por su
+						excelencia en seguridad. Nuestros rigurosos estándares de seguridad
+						nos permiten ofrecerte opciones de vuelo confiables y protegidas.
+					</p>
+				</article>
+				<article>
+					<img src="./img/viajero.jpg" alt="" />
+					<h3>Vuela con nosotros</h3>
+					<p>
+						Nuestro compromiso es brindarte un viaje confiable. Con nosotros,
+						puedes volar tranquilo, sabiendo que trabajamos arduamente para
+						garantizar que cada aspecto de tu experiencia sea cuidadosamente
+						gestionado.
+					</p>
+				</article>
+			</section>
+		</main>
+		<footer>
+			<p>David, Angela, Dumitru, Noelia - 2023 ©</p>
+		</footer>
+		<script type="module" src="./js/main.js"></script>
+	</body>
 </html>

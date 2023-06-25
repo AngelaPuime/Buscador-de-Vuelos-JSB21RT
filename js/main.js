@@ -1,62 +1,67 @@
 "use strict";
 import {
-  fromInput,
-  toInput,
-  departureDateInput,
-  passengersInput,
-  btnSearch,
-  responseSection,
+	fromInput,
+	toInput,
+	departureDateInput,
+	passengersInput,
+	btnSearch,
+	responseSection,
+	loadingSection,
+	arrayFotos,
+	imgSearch,
 } from "./const.js";
 
 import { getFlightOffers, getToken } from "./apiRequest.js";
 
-// Manejar el evento de clic en el botón de búsqueda & validación de datos
+// Managing click event and data validation
 function handleSearchClick(event) {
-  try {
-    event.preventDefault();
-    const fromValue = fromInput.value.toUpperCase();
-    if (fromValue.length !== 3) {
-      // responseSection =
-      throw new Error("Valor válido 3 caracteres.");
-    }
-    if (!isNaN(fromValue)) {
-      throw new Error("Valor válido letras.");
-    }
-    const toValue = toInput.value.toUpperCase();
-    if (toValue.length !== 3) {
-      throw new Error("Valor válido 3 caracteres");
-    }
-    if (!isNaN(toValue)) {
-      throw new Error("Valor válido letras.");
-    }
-    let departureDateValue = departureDateInput.value;
-    departureDateValue = cambiarFormatoFecha(departureDateValue);
-    let passengersValue = passengersInput.value;
-    passengersValue = Math.floor(passengersValue);
+	try {
+		event.preventDefault();
+		loadingSection.classList.remove("hidden");
+		responseSection.innerHTML = ``;
+		const fromValue = fromInput.value.toUpperCase();
+		if (fromValue.length !== 3) {
+			// responseSection =
+			throw new Error("Valor válido 3 caracteres.");
+		}
+		if (!isNaN(fromValue)) {
+			throw new Error("Valor válido letras.");
+		}
+		const toValue = toInput.value.toUpperCase();
+		if (toValue.length !== 3) {
+			throw new Error("Valor válido 3 caracteres");
+		}
+		if (!isNaN(toValue)) {
+			throw new Error("Valor válido letras.");
+		}
+		let departureDateValue = departureDateInput.value;
+		departureDateValue = dateInvert(departureDateValue);
+		let passengersValue = passengersInput.value;
+		passengersValue = Math.floor(passengersValue);
 
-    if (isNaN(passengersValue)) {
-      throw new Error("Valor válido números.");
-    }
+		if (isNaN(passengersValue)) {
+			throw new Error("Valor válido números.");
+		}
 
-    getToken()
-      .then((token) => {
-        return getFlightOffers(
-          token,
-          fromValue,
-          toValue,
-          departureDateValue,
-          passengersValue
-        );
-      })
-      .then((flightOffers) => {
-        if (flightOffers && flightOffers.length > 0) {
-          const firstOffer = flightOffers[0];
-          const price = firstOffer.price.total;
-          let duration = firstOffer.itineraries[0].duration.slice(2);
-          console.log(flightOffers);
-
-          //creamos la seccion con los datos del vuelo
-          responseSection.innerHTML = `
+		getToken()
+			.then((token) => {
+				return getFlightOffers(
+					token,
+					fromValue,
+					toValue,
+					departureDateValue,
+					passengersValue
+				);
+			})
+			.then((flightOffers) => {
+				if (flightOffers && flightOffers.length > 0) {
+					const firstOffer = flightOffers[0];
+					const price = firstOffer.price.total;
+					let duration = firstOffer.itineraries[0].duration.slice(2);
+					console.log(flightOffers);
+					//creating section with flight data
+					document.querySelector("section.loading").classList.add("hidden");
+					responseSection.innerHTML = `
 
           <article>
           <h2>LOS DATOS PARA TU VUELO DEL</h2>   
@@ -69,40 +74,52 @@ function handleSearchClick(event) {
           </ul>
         </article>
           `;
-        } else {
-          throw new Error("No se encontraron datos de vuelo.");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    //llamamos a la seccion para q imprima los resultados (solo llega aqui si no entro en nigun error)
-  } catch (error) {
-    responseSection.innerHTML = `
-    <article class="error"> ${error} </article> 
-    `;
-  }
+				} else {
+					loadingSection.classList.add("hidden");
+					responseSection.innerHTML = `
+            <article class="error"> Error: No se encontraton datos de vuelo </article> 
+    
+          `;
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	} catch (error) {
+		loadingSection.classList.add("hidden");
+		responseSection.innerHTML = `
+      <article class="error"> ${error} </article> 
+      
+      `;
+	}
 }
 
-// Agregar el event listener al botón de búsqueda
 btnSearch.addEventListener("click", handleSearchClick);
 
-// invertir fecha que introduce usuario para recibir el formato API
-
-function cambiarFormatoFecha(fecha) {
-  const partes = fecha.split("-"); // Divide la fecha en partes [dd, mm, yyyy]
-  let nuevaFecha = partes[2] + "-" + partes[1] + "-" + partes[0]; // Reordena las partes
-  //comprobamos que los dias sean escritos en formato de 31 dias y que los meses esten en formato 12 meses
-  if (
-    (partes[0] > 31 && partes[0] <= 0) ||
-    (partes[1] > 12 && partes[1] <= 0)
-  ) {
-    throw new Error("Fecha inválida");
-  }
-  if (partes[2] < 2023) {
-    throw new Error("No tenemos vuelos al pasado"); //anadir mas tarde foto del delorian
-  }
-  return nuevaFecha;
+// changing date format
+function dateInvert(date) {
+	const parts = date.split("-"); //new format [dd, mm, yyyy]
+	let newDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+	//date validation
+	if (parts[0] > 31 || parts[0] <= 0 || parts[1] > 12 || parts[1] <= 0) {
+		throw new Error("Fecha inválida");
+	}
+	if (parts[2] < 2023) {
+		throw new Error(` No tenemos vuelos al pasado`);
+	}
+	return newDate;
 }
 
-//
+//slider
+let currentIndex = 0;
+
+function changeBackgroundImage() {
+	currentIndex++;
+	if (currentIndex == arrayFotos.length) {
+		currentIndex = 0;
+	}
+	const currentImageUrl = arrayFotos[currentIndex];
+	imgSearch.style.backgroundImage = `url(${currentImageUrl})`;
+}
+
+setInterval(changeBackgroundImage, 5000);
