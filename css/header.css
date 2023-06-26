@@ -2,44 +2,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Nunito:wght@400;700&display=swap");
 
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html {
-	--fontFamily: "Nunito", sans-serif;
-	font-family: var(--fontFamily);
-	--mainColor: #4ddbba;
-	--transparentMainColor: #28bbb867;
-	--secondaryColor: #e5cfab;
-	--thirdColor: #f8b755;
-	background: linear-gradient(180deg, var(--mainColor), rgb(255, 255, 255));
+  --fontFamily: "Nunito", sans-serif;
+  font-family: var(--fontFamily);
+  --mainColor: #4ddbba;
+  --transparentMainColor: #28bbb867;
+  --secondaryColor: #e5cfab;
+  --thirdColor: #f8b755;
+  background: linear-gradient(180deg, var(--mainColor), rgb(255, 255, 255));
 }
 
 body {
-	min-height: 100vh;
+  min-height: 100vh;
 }
 
 #iconPageName {
-	width: 20vw;
-	margin: auto;
+  width: 20vw;
+  margin: auto;
 }
 
 header {
-	display: flex;
-	padding: 0.2rem;
-	justify-content: space-between;
-	background-color: var(--mainColor);
-	height: 100%;
+  display: flex;
+  padding: 0.2rem;
+  justify-content: space-between;
+  background-color: var(--mainColor);
+  height: 100%;
 }
 
 /*mediaquery laptop*/
 @media (min-width: 950px) {
-	#iconPageName {
-		width: 9vw;
-	}
-	.dateInput {
-		letter-spacing: -1px;
-	}
+  #iconPageName {
+    width: 9vw;
+  }
+  .dateInput {
+    letter-spacing: -1px;
+  }
 }
