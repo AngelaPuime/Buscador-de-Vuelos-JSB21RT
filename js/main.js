@@ -77,7 +77,7 @@ function handleSearchClick(event) {
 				} else {
 					loadingSection.classList.add("hidden");
 					responseSection.innerHTML = `
-            <article class="error"> Error: No se encontraton datos de vuelo </article> 
+            <article class="error"> Error: No se encontraron datos de vuelo </article> 
     
           `;
 				}
