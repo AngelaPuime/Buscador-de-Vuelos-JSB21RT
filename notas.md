@@ -22,4 +22,3 @@ revisar responsividad
 Enseñar response
 alerts errores 
 
-TEST NOE 
